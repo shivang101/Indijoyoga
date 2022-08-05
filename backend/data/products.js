@@ -14,7 +14,7 @@ const products = [
   },
   {
     // _id: "2",
-    name: "iPhone 13 Pro 256GB Memory",
+    name: "iPhone 14 Pro 256GB Memory",
     image: "/Images/Products/phone.jpg",
     description:
       "Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life",
