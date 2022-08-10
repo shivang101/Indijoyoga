@@ -17,7 +17,7 @@ const HomeScreen = () => {
 
   return (
     <>
-      <div className="grid grid-cols-3 justify-items-center gap-20 mx-40">
+      <div className="grid grid-cols-3 justify-items-center gap-16  mx-40">
         {products.map((el) => (
           <div key={el._id}>
             <Product product={el} />

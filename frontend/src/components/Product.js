@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 const Product = ({ product }) => {
   return (
     <>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <h1 className="text-4xl">{product.name}</h1>
+      <div className="mt-14 h-full max-w-sm rounded overflow-hidden shadow-lg">
+        <h1 className="text-2xl h-24 text-center pt-6 font-semibold">
+          {product.name}
+        </h1>
         <Link to={`product/${product._id}`}>
           <img
             className="w-full object-cover p-4"
@@ -14,12 +16,10 @@ const Product = ({ product }) => {
           ></img>
         </Link>
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-          <p className="text-gray-700 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus quia, nulla! Maiores et perferendis eaque,
-            exercitationem praesentium nihil.
-          </p>
+          <div className="font-bold text-center text-xl mb-2 h-20">
+            {product.name}
+          </div>
+          <p className="text-gray-700 text-base h-28">{product.description}</p>
         </div>
         <div className="px-6 pt-4 pb-2">
           {product.rating} from {product.numReviews} reviews
