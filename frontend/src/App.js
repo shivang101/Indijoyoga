@@ -9,12 +9,11 @@ function App() {
   return (
     <Router>
       <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<HomeScreen />} exact />
-          <Route path="/product/:id" element={<ProductScreen />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<HomeScreen />} exact />
+        <Route path="/product/:id" element={<ProductScreen />} />
+      </Routes>
+
       <Footer />
     </Router>
   );

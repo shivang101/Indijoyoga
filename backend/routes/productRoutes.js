@@ -11,7 +11,7 @@ router.get(
   asyncHandler(async (req, res) => {
     //empty objetcs gives everything
     const products = await Product.find({});
-
+    // throw new Error("Something Went Wrong");
     res.json(products);
   })
 );

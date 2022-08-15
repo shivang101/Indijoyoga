@@ -1,31 +1,38 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Product from "../components/Product";
-import axios from "axios";
+import { listProducts } from "../actions/productActions";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const HomeScreen = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
+
+  const dispatch = useDispatch();
+
+  const productList = useSelector((state) => state.productList);
+  const { loading, products, error } = productList;
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const res = await axios.get("/api/products");
+    dispatch(listProducts());
+  }, [dispatch]);
 
-      setProducts(res.data);
-    };
-
-    fetchProducts();
-  }, []);
-
+  // const products = [];
   return (
     <>
-      <div className="grid grid-cols-3 justify-items-center gap-16  mx-40">
-        {products.map((el) => (
-          <div key={el._id}>
-            <Product product={el} />
-          </div>
+      <h1 className="text-4xl font-semibold text-center">Latest Products</h1>
+      {loading && <Loader></Loader>}
+      {error && <Message variant={error}></Message>}
 
-          // {<h1>{el.name}</h1>}
-        ))}
-      </div>
+      {!error && (
+        <div className="grid grid-cols-3 justify-items-center gap-16  mx-40">
+          {products.map((el) => (
+            <div key={el._id}>
+              <Product product={el} />
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/shivang101/Indijoyoga#readme",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.4",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
