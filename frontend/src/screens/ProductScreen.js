@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import Rating from "../components/Rating";
-import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { listProductDetails } from "../actions/productActions";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const ProductScreen = () => {
-  const [product, setProduct] = useState({});
+  // const [product, setProduct] = useState({});
 
   const { id } = useParams();
 
+  const dispatch = useDispatch();
+
+  const productDetails = useSelector((state) => state.productDetails);
+  const { loading, error, product } = productDetails;
   useEffect(() => {
-    const fetchProduct = async () => {
-      const res = await axios.get(`/api/products/${id}`);
-      console.log(res);
-
-      setProduct(res.data);
-    };
-
-    fetchProduct();
-  }, [id]);
+    dispatch(listProductDetails(id));
+  }, [dispatch, id]);
 
   return (
     <>
@@ -26,6 +26,9 @@ const ProductScreen = () => {
           <Link className="p-4 text-xl " to="/">
             GO BACK
           </Link>
+          {loading && <Loader></Loader>}
+
+          {error && <Message variant={error}></Message>}
           <img
             src={product.image}
             alt={product.name}
