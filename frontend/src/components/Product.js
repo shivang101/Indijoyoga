@@ -19,10 +19,9 @@ const Product = ({ product }) => {
           <div className="font-bold text-center text-xl mb-2 h-20">
             {product.name}
           </div>
-          <p className="text-gray-700 text-base h-28">{product.description}</p>
+          <p className="text-gray-700 text-base h-36">{product.description}</p>
         </div>
         <div className="px-6 pt-4 pb-2">
-          {product.rating} from {product.numReviews} reviews
           <Rating
             value={product.rating}
             text={`${product.numReviews} reviews`}
