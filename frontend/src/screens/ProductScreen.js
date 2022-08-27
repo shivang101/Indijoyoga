@@ -8,12 +8,13 @@ import Message from "../components/Message";
 
 const ProductScreen = () => {
   // const [product, setProduct] = useState({});
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   const { id } = useParams();
 
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
+
   const { loading, error, product } = productDetails;
   useEffect(() => {
     dispatch(listProductDetails(id));
@@ -82,7 +83,6 @@ const ProductScreen = () => {
                 value={qty}
                 onChange={(e) => {
                   setQty(e.target.value);
-                  console.log(qty);
                 }}
               >
                 {product.countInStock > 0 &&

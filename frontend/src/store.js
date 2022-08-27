@@ -3,12 +3,20 @@ import {
   productDetailsReducer,
   productListReducer,
 } from "./reducers/productReducers";
+import { cartReducer } from "./reducers/cartReducer";
 
-const preloadedState = {};
+const cartItemsFromStorage = localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
+  : [];
+
+const preloadedState = {
+  cart: { cartItems: cartItemsFromStorage },
+};
 
 const reducer = {
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  cart: cartReducer,
 };
 
 const store = configureStore({
